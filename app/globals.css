@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-charcoal font-body antialiased;
+}
+
+/* Scroll-reveal: elements start hidden, revealed via IntersectionObserver adding .in-view */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* thin glowing divider used as the site's signature motif */
+.ice-divider {
+  height: 2px;
+  width: 64px;
+  @apply bg-ice-line;
+}
+
+/* visible keyboard focus, accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #3b5bff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
